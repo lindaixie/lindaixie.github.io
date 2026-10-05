@@ -156,7 +156,35 @@
       var line = card.getAttribute('data-say'), out = m.querySelector('.tt-text'), bub = m.querySelector('.tt-bubble'), k = 0, tick = null;
       var type = function () { out.textContent = line.slice(0, ++k); if (k < line.length) tick = setTimeout(type, Math.min(32, 3600 / line.length)); else shown(); };
       var auto = null;
-      var shown = function () { bub.classList.add('tt-done'); m.classList.add('counting'); auto = setTimeout(function () { close(); }, 6000); };
+      var countdown = function () {
+        clearTimeout(auto); m.classList.remove('counting'); void m.offsetWidth; m.classList.add('counting');
+        auto = setTimeout(function () { close(); }, 6000);
+      };
+      var shown = function () { bub.classList.add('tt-done'); likeRow(); countdown(); };
+      /* "like our service?" heart under the line (TikTech): outline heart turns red on click; shared like count */
+      var likeRow = function () {
+        var key = card.getAttribute('data-like'); if (!key) return;
+        var API = 'https://abacus.jasoncameron.dev', NS = 'lindaixie-github-io', LK = 'twig-liked-' + key, liked = false;
+        try { liked = localStorage.getItem(LK) === '1'; } catch (e) {}
+        var row = doc.createElement('span'); row.className = 'tt-like';
+        row.innerHTML = '<span class="tt-like-t">' + L('If you like our service, please give us a like!', '喜欢我们的服务的话，请点个赞！') + '</span>' +
+          '<button class="tt-like-btn" type="button" aria-pressed="' + liked + '" aria-label="' + L('Like', '点赞') + '">' +
+          '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.5 8.2 3.3 4.8 6.8 4.5c2.1-.2 3.9.9 5.2 2.8 1.3-1.9 3.1-3 5.2-2.8 3.5.3 5.3 3.7 4.1 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg>' +
+          '</button><span class="tt-like-n" aria-live="polite"></span>';
+        bub.appendChild(row);
+        var btn = row.querySelector('.tt-like-btn'), num = row.querySelector('.tt-like-n');
+        var setN = function (v) { if (typeof v === 'number') num.textContent = v; };
+        if (window.fetch) fetch(API + '/get/' + NS + '/' + key + '-likes').then(function (r) { return r.status === 404 ? { value: 0 } : r.json(); })
+          .then(function (d) { setN(d && d.value); }).catch(function () {});
+        btn.addEventListener('click', function () {
+          countdown();
+          if (liked) return;
+          liked = true; btn.setAttribute('aria-pressed', 'true'); btn.classList.remove('pop'); void btn.offsetWidth; btn.classList.add('pop');
+          try { localStorage.setItem(LK, '1'); } catch (e) {}
+          var cur = parseInt(num.textContent, 10); if (!isNaN(cur)) setN(cur + 1);
+          if (window.fetch) fetch(API + '/hit/' + NS + '/' + key + '-likes').then(function (r) { return r.json(); }).then(function (d) { setN(d && d.value); }).catch(function () {});
+        });
+      };
       if (still.matches) { out.textContent = line; shown(); } else tick = setTimeout(type, 900);
       /* pet him: wiggle + heart burst */
       photo.addEventListener('click', function () {
