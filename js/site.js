@@ -272,6 +272,40 @@
     io.observe(jr);
   })();
 
+  /* ---- easter eggs: remember which ones this visitor found; count visitors who found at least one ---- */
+  (function () {
+    var API = 'https://abacus.jasoncameron.dev', NS = 'lindaixie-github-io', KEY = 'twig-eggs';
+    var mine = [];
+    try { mine = JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { mine = []; }
+    var hit = function (k) { try { fetch(API + '/hit/' + NS + '/' + k, { mode: 'cors' }).catch(function () {}); } catch (e) {} };
+    var show = function () {
+      var me = doc.querySelector('.egg-me'), box = doc.querySelector('.egg-mine');
+      if (me && box) { me.textContent = mine.length; box.hidden = mine.length === 0; }
+    };
+    var found = function (k) {
+      if (mine.indexOf(k) !== -1) return;
+      mine.push(k);
+      try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (e) {}
+      if (mine.length === 1) hit('egg-finders');   /* each browser counts once, on its first egg */
+      hit('egg-' + k);
+      show();
+    };
+    doc.addEventListener('click', function (ev) { if (ev.target.closest && ev.target.closest('.person.has-say')) found('say'); });
+    var peek = function (ev) { if (ev.target.closest && ev.target.closest('.person.has-reveal .avatar')) found('peek'); };
+    doc.addEventListener('mouseover', peek);
+    doc.addEventListener('pointerdown', peek);
+    if (doc.querySelector('.book')) found('ack');
+    show();
+    var n = doc.querySelector('.egg-n'), cnt = doc.querySelector('.egg-count');
+    if (n && cnt && window.fetch) {
+      fetch(API + '/get/' + NS + '/egg-finders', { mode: 'cors' })
+        .then(function (r) { return r.status === 404 ? { value: 0 } : r.json(); })
+        .then(function (d) { if (d && typeof d.value === 'number') { n.textContent = d.value; cnt.hidden = false;
+          if (d.value === 1 && !ZH) doc.querySelector('.egg-who').textContent = 'visitor has found at least one so far.'; } })
+        .catch(function () {});
+    }
+  })();
+
   /* ---- mobile menu ---- */
   var btn = doc.querySelector('.menu-btn');
   var nav = doc.getElementById('site-nav');

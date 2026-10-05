@@ -813,6 +813,16 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
   .jr-foot.r svg{transform:rotate(calc(180deg + var(--r,0deg))) scaleX(-1)}
   .jr-foot{width:11px;height:22px}
 }
+/* easter-egg note (People page, above the footer) */
+.egg-sec{padding:clamp(20px,3vw,32px) 0 clamp(28px,4vw,48px)}
+.egg-note{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto;max-width:720px;padding:10px 18px;border:1px dashed var(--line-2);border-radius:999px;
+  color:var(--ink-3);font-size:14px;line-height:1.5;text-align:center}
+.egg-ic{font-size:18px;line-height:1;display:inline-block;transform-origin:50% 90%}
+.egg-note:hover .egg-ic{animation:eggWobble .9s ease-in-out}
+.egg-n,.egg-me{color:var(--teal);font-variant-numeric:tabular-nums}
+@keyframes eggWobble{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){.egg-note:hover .egg-ic{animation:none}}
+@media (max-width:560px){.egg-note{border-radius:18px;align-items:flex-start;text-align:left}}
 /* area progress bar (left of the arrow) */
 .area-prog{flex:1;max-width:220px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-right:var(--s4)}
 .area-prog .seg{height:10px;border-radius:5px}
