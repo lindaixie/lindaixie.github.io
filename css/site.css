@@ -32,7 +32,7 @@
   --ac1:#1d4a42; --ac2:#5f9150; --ac3:#7a5536;
   --area-line:#b9d3c9; --prog-doing:#9cc58b; --prog-todo:#fff; --prog-todo-line:#cfdcd6;
   --shadow-pop:rgba(20,35,43,.16); --logo-chip:transparent;
-  --paper:#fffdf7; --hl:rgba(156,197,139,.5);
+  --paper:#fffdf7; --hl:rgba(156,197,139,.5); --seed:#8a5a3b; --drop:#3d8bd6;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -401,7 +401,7 @@ a:hover .chev{transform:translate(3px,.03em)}
   --placeholder:#8c9d96; --photo-a:#1c2c27; --photo-b:#213a32; --join-end:#1c322b;
   --ac1:#86cfc1; --ac2:#9cc58b; --ac3:#cfa77e;
   --area-line:#3a5a50; --prog-doing:#9cc58b; --prog-todo:transparent; --prog-todo-line:#3e544c;
-  --shadow-pop:rgba(0,0,0,.45); --logo-chip:#f4f2ec; --paper:#1a2421; --hl:rgba(98,184,169,.38);
+  --shadow-pop:rgba(0,0,0,.45); --logo-chip:#f4f2ec; --paper:#1a2421; --hl:rgba(98,184,169,.38); --seed:#c8a27a; --drop:#7fb8f0;
   color-scheme:dark;}}
 :root[data-theme="dark"]{--bg:#0f1614; --bg-tint:#131d1a; --tile:#18221f; --tile-sage:#1a2925; --mint:#1c3a31;
   --ink:#e8efeb; --ink-2:#bfccc6; --ink-3:#9aaba4;
@@ -418,7 +418,7 @@ a:hover .chev{transform:translate(3px,.03em)}
   --placeholder:#8c9d96; --photo-a:#1c2c27; --photo-b:#213a32; --join-end:#1c322b;
   --ac1:#86cfc1; --ac2:#9cc58b; --ac3:#cfa77e;
   --area-line:#3a5a50; --prog-doing:#9cc58b; --prog-todo:transparent; --prog-todo-line:#3e544c;
-  --shadow-pop:rgba(0,0,0,.45); --logo-chip:#f4f2ec; --paper:#1a2421; --hl:rgba(98,184,169,.38);
+  --shadow-pop:rgba(0,0,0,.45); --logo-chip:#f4f2ec; --paper:#1a2421; --hl:rgba(98,184,169,.38); --seed:#c8a27a; --drop:#7fb8f0;
   color-scheme:dark;}
 /* logos: night versions of the TWIG wordmark */
 .brand .logo.logo-night{display:none}
@@ -835,14 +835,14 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 @media (max-width:560px){.egg-note{border-radius:18px;align-items:flex-start;text-align:left}}
 /* kitten hoeing the first published segment */
 .area-prog{position:relative}
-.farm-cat{position:absolute;left:-9px;bottom:100%;margin-bottom:-1px;width:32px;height:32px;color:var(--ink);pointer-events:none}
+.farm-cat{position:absolute;left:calc((100% + 4px) * var(--at) / var(--n) - 9px);transition:left .7s cubic-bezier(.4,0,.3,1);bottom:100%;margin-bottom:-1px;width:32px;height:32px;color:var(--ink);pointer-events:none}
 .farm-cat svg{display:block;overflow:visible}
 .fc-hoe{transform-box:view-box;transform-origin:7px 15.2px;transform:rotate(0deg)}
 .fc-dust circle{fill:var(--teal);opacity:0;transform-box:fill-box;transform-origin:center}
 .fc-dust .d2{fill:var(--ac2)}
 @media (prefers-reduced-motion:no-preference){
-  .fc-hoe{animation:fcHoe 1.15s cubic-bezier(.45,0,.3,1) infinite}
-  .fc-body{animation:fcBob 1.15s ease-in-out infinite}
+  .fk-hoe .fc-hoe{animation:fcHoe 1.15s cubic-bezier(.45,0,.3,1) infinite}
+  .fk-hoe .fc-body{animation:fcBob 1.15s ease-in-out infinite}
   .fc-dust .d1{animation:fcDust1 1.15s ease-out infinite}
   .fc-dust .d2{animation:fcDust2 1.15s ease-out infinite}
   .fc-dust .d3{animation:fcDust3 1.15s ease-out infinite}
@@ -852,6 +852,29 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 @keyframes fcDust1{0%,56%{opacity:0;transform:translate(0,0) scale(.6)}62%{opacity:1}88%,100%{opacity:0;transform:translate(4px,-7px) scale(1)}}
 @keyframes fcDust2{0%,56%{opacity:0;transform:translate(0,0) scale(.6)}62%{opacity:1}90%,100%{opacity:0;transform:translate(-2px,-8px) scale(1)}}
 @keyframes fcDust3{0%,57%{opacity:0;transform:translate(0,0) scale(.6)}63%{opacity:.9}86%,100%{opacity:0;transform:translate(7px,-4px) scale(1)}}
+/* sowing kitten (Area 2): hand dips into the basket, then flings brown seeds onto the bar */
+.fc-arm{transform-box:view-box;transform-origin:7px 15px}
+.fc-seeds circle{fill:var(--seed);opacity:0}
+/* watering kitten (Area 3): the can tips gently while blue drops fall from the rose */
+.fc-can{transform-box:view-box;transform-origin:10.6px 18.4px}
+.fc-drops circle{fill:var(--drop);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .fk-sow .fc-arm{animation:fcSowArm 1.6s ease-in-out infinite}
+  .fk-sow .s1{animation:fcSeed1 1.6s linear infinite}
+  .fk-sow .s2{animation:fcSeed2 1.6s linear infinite}
+  .fk-sow .s3{animation:fcSeed3 1.6s linear infinite}
+  .fk-sow .fc-body,.fk-water .fc-body{animation:fcBob 1.6s ease-in-out infinite}
+  .fk-water .fc-can{animation:fcCan 2.4s ease-in-out infinite}
+  .fk-water .fc-drops circle{animation:fcDrop .8s linear infinite}
+  .fk-water .w2{animation-delay:.2s!important}.fk-water .w3{animation-delay:.4s!important}.fk-water .w4{animation-delay:.6s!important}
+}
+@media (prefers-reduced-motion:reduce){.fc-seeds circle,.fc-drops circle{opacity:.9}.fc-seeds .s1{transform:translate(6px,17px)}.fc-seeds .s2{transform:translate(10px,17.4px)}.fc-seeds .s3{transform:translate(13px,17px)}}
+@keyframes fcSowArm{0%,20%{transform:rotate(0deg)}30%{transform:rotate(6deg)}52%{transform:rotate(-62deg)}62%{transform:rotate(-52deg)}100%{transform:rotate(0deg)}}
+@keyframes fcSeed1{0%,50%{opacity:0;transform:translate(0,0)}53%{opacity:1;transform:translate(0,0)}63%{transform:translate(3px,-2px)}76%{transform:translate(6px,17px)}90%{opacity:1;transform:translate(6px,17px)}100%{opacity:0;transform:translate(6px,17px)}}
+@keyframes fcSeed2{0%,51%{opacity:0;transform:translate(0,0)}54%{opacity:1;transform:translate(0,0)}65%{transform:translate(5px,-3px)}79%{transform:translate(10px,17.4px)}92%{opacity:1;transform:translate(10px,17.4px)}100%{opacity:0;transform:translate(10px,17.4px)}}
+@keyframes fcSeed3{0%,52%{opacity:0;transform:translate(0,0)}55%{opacity:1;transform:translate(0,0)}67%{transform:translate(7px,-2.5px)}82%{transform:translate(13px,17px)}94%{opacity:1;transform:translate(13px,17px)}100%{opacity:0;transform:translate(13px,17px)}}
+@keyframes fcCan{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(6deg)}}
+@keyframes fcDrop{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:1;transform:translateY(4.6px)}100%{opacity:0;transform:translateY(5px)}}
 /* area progress bar (left of the arrow) */
 .area-prog{flex:1;max-width:220px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-right:var(--s4)}
 .area-prog .seg{height:10px;border-radius:5px}

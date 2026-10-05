@@ -334,6 +334,31 @@
     }
   })();
 
+  /* ---- area kittens: work their way right, one segment at a time, to the last in-progress segment ---- */
+  (function () {
+    var cats = Array.prototype.slice.call(doc.querySelectorAll('.farm-cat[data-to]'));
+    if (!cats.length) return;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var walk = function (c) {
+      var to = +c.getAttribute('data-to'), at = 0;
+      if (still) { c.style.setProperty('--at', to); return; }
+      var t = setInterval(function () {
+        if (at >= to) { clearInterval(t); return; }
+        at += 1; c.style.setProperty('--at', at);
+      }, 2300);
+    };
+    var started = [];
+    var start = function (c) { if (started.indexOf(c) !== -1) return; started.push(c); setTimeout(function () { walk(c); }, 1200); };
+    var inView = function (c) { var r = c.getBoundingClientRect(); return r.bottom > 0 && r.top < (window.innerHeight || doc.documentElement.clientHeight); };
+    var check = function () { cats.forEach(function (c) { if (inView(c)) start(c); }); };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) start(en.target); }); }, { threshold: 0.1 });
+      cats.forEach(function (c) { io.observe(c); });
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
   /* ---- mobile menu ---- */
   var btn = doc.querySelector('.menu-btn');
   var nav = doc.getElementById('site-nav');
