@@ -495,8 +495,8 @@ h1,h2,h3,.display,.display-2,.display-3,.h2,.h3,.eyebrow,.amount,.year,.btn,.pil
 .people-lab-support .person-tags .p-side .avatar{width:120px;height:120px}
 .people-lab-support .person.person-tags{grid-template-columns:120px minmax(0,1fr);column-gap:18px}
 /* Collaborators: slightly larger photos */
-.people-collaborators .person.person-tags{grid-template-columns:96px minmax(0,1fr);column-gap:12px}
-.people-collaborators .person-tags .p-side .avatar{width:96px;height:96px}
+.people-collaborators .person.person-tags,.people-student-researchers-and-teaching-interns .person.person-tags{grid-template-columns:96px minmax(0,1fr);column-gap:12px}
+.people-collaborators .person-tags .p-side .avatar,.people-student-researchers-and-teaching-interns .person-tags .p-side .avatar{width:96px;height:96px}
 .people-collaborators .person-tags .p-side .pill-role{width:92px}
 a.pill-area{text-decoration:none;transition:background-color .15s var(--ease),color .15s var(--ease)}
 a.pill-area:hover{background:var(--teal);color:var(--on-accent);box-shadow:none}
