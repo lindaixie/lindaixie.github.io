@@ -736,6 +736,26 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .svc-venue{font-weight:600;color:var(--ink);line-height:1.4}
 .svc-meta{font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums}
 .svc-role{color:var(--teal-2)}
+/* conference presentations (Publications page) */
+.tile.talk-list{list-style:none;margin:0;padding:var(--s2) clamp(20px,3vw,36px)}
+.talk{display:grid;grid-template-columns:4em minmax(0,1fr);gap:var(--s4);padding:var(--s4) 0;border-top:1px solid var(--line)}
+.talk:first-child{border-top:0}
+.talk-yr{font-family:var(--font-round);font-weight:600;color:var(--teal);font-variant-numeric:tabular-nums;padding-top:1px}
+.talk-c{margin:0;color:var(--ink-2);line-height:1.6;padding-left:1.4em;text-indent:-1.4em;overflow-wrap:anywhere}
+.talk-c strong{color:var(--ink);font-weight:700}
+.talk-c em{color:var(--ink)}
+@media (max-width:560px){.talk{grid-template-columns:1fr;gap:2px}}
+/* teaching page */
+.course-groups{display:flex;flex-direction:column;gap:var(--s7)}
+.course-group .tile-h{margin-bottom:var(--s3)}
+.tile.course-list{list-style:none;margin:0;padding:var(--s2) clamp(20px,3vw,36px)}
+.course{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:var(--s4);align-items:baseline;padding:var(--s4) 0;border-top:1px solid var(--line)}
+.course:first-child{border-top:0}
+.course-code{font-family:var(--font-round);font-weight:600;color:var(--teal);font-variant-numeric:tabular-nums;white-space:nowrap}
+.course-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+.course-t{font-weight:600;color:var(--ink);font-size:17px}
+.course-meta{font-size:14px;color:var(--ink-3)}
+@media (max-width:560px){.course{grid-template-columns:1fr;gap:2px}}
 /* area progress bar (left of the arrow) */
 .area-prog{flex:1;max-width:220px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-right:var(--s4)}
 .area-prog .seg{height:10px;border-radius:5px}
