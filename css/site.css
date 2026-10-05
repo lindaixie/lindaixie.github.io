@@ -847,6 +847,13 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .fc-hoe{transform-box:view-box;transform-origin:7px 15.2px;transform:rotate(0deg)}
 .fc-dust circle{fill:var(--teal);opacity:0;transform-box:fill-box;transform-origin:center}
 .fc-leg{transform-box:view-box;transform-origin:7px 21px}
+.fc-tail{transform-box:view-box;transform-origin:7px 20.8px}
+.lc-tail{transform-box:view-box;transform-origin:9px 23.3px}
+@media (prefers-reduced-motion:no-preference){
+  .fc-tail{animation:tailSway 2.2s ease-in-out infinite}
+  .lc-tail{animation:tailSway 2.6s ease-in-out infinite}
+}
+@keyframes tailSway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(6deg)}}
 .fc-leg.l1{transform:rotate(17deg)}.fc-leg.l2{transform:rotate(-17deg)}
 @media (prefers-reduced-motion:no-preference){
   .farm-cat.walking .l1{animation:fcStepA .7s ease-in-out infinite}
