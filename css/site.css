@@ -98,7 +98,7 @@ main:focus{outline:none}
 .btn:hover{background:var(--teal-2);text-decoration:none}
 .btn:active{transform:scale(.98)}
 .btn-quiet{background:var(--teal-soft);color:var(--teal-2)}
-.btn-quiet:hover{background:var(--quiet-hover)}
+.btn-quiet:hover{background:var(--teal);color:var(--on-accent)}
 .more{white-space:nowrap;display:inline-flex;align-items:baseline;gap:2px;font-size:17px;font-weight:400;color:var(--teal);letter-spacing:-.015em}
 .chev{display:inline-block;margin-left:4px;font-size:1.15em;line-height:1;transform:translateY(.03em);transition:transform .2s var(--ease)}
 a:hover .chev{transform:translate(3px,.03em)}
