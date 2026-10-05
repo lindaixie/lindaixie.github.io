@@ -730,10 +730,11 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 /* professional service (Publications page) */
 .svc-grid{align-items:start}
 .tile.svc-col{padding:clamp(20px,2.4vw,28px)}
-.svc-block+.svc-block{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line-2)}
+.svc-stack{display:flex;flex-direction:column;gap:var(--s4);min-width:0}
 .svc-list{list-style:none;margin:var(--s3) 0 0;padding:0}
 .svc-item{display:flex;flex-direction:column;gap:2px;padding:var(--s3) 0;border-top:1px solid var(--line)}
 .svc-item:first-child{border-top:0;padding-top:0}
+.svc-item:last-child{padding-bottom:0}
 .svc-venue{font-weight:600;color:var(--ink);line-height:1.4}
 .svc-meta{font-size:14px;color:var(--ink-3);font-variant-numeric:tabular-nums}
 .svc-role{color:var(--teal-2)}
@@ -760,22 +761,22 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .course-meta{font-size:14px;color:var(--ink-3)}
 @media (max-width:560px){.course{grid-template-columns:1fr;gap:2px}}
 /* home: education-to-now timeline with walking footprints */
-.journey{margin-top:clamp(40px,5vw,64px);padding-top:clamp(28px,3.5vw,40px);border-top:1px solid var(--line)}
-.jr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:var(--s5) 0 0;padding:0}
+.journey{margin-top:clamp(28px,3.5vw,44px);padding-top:clamp(20px,2.5vw,28px);border-top:1px solid var(--line)}
+.jr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:var(--s4) 0 0;padding:0;max-width:980px}
 .jr-stop{position:relative;min-width:0;padding-right:var(--s4)}
 .jr-stop p{margin:0}
-.jr-dot{position:relative;z-index:1;display:block;width:18px;height:18px;margin-bottom:var(--s4);border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px var(--teal-soft)}
-.jr-steps{position:absolute;top:0;left:34px;right:14px;height:18px;display:flex;align-items:center;justify-content:space-around}
+.jr-dot{position:relative;z-index:1;display:block;width:16px;height:16px;margin-bottom:var(--s3);border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px var(--teal-soft)}
+.jr-steps{position:absolute;top:0;left:30px;right:14px;height:16px;display:flex;align-items:center;justify-content:space-around}
 .jr-foot{display:block;width:11px;height:22px;color:var(--teal);opacity:.55}
 .jr-foot svg{display:block;width:100%;height:100%;fill:currentColor;transform:rotate(90deg)}
 .jr-foot.r svg{transform:rotate(90deg) scaleX(-1)}
 .jr-foot.l{margin-top:-14px}
 .jr-foot.r{margin-top:14px}
-.jr-yr{display:flex;align-items:center;gap:8px;font-family:var(--font-round);font-weight:600;font-size:20px;color:var(--teal);font-variant-numeric:tabular-nums}
+.jr-yr{display:flex;align-items:center;gap:8px;font-family:var(--font-round);font-weight:600;font-size:17px;color:var(--teal);font-variant-numeric:tabular-nums}
 .jr-badge{font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);background:var(--teal);padding:2px 8px;border-radius:999px}
-.jr-title{margin-top:6px!important;font-weight:700;color:var(--ink);font-size:16px}
-.jr-field{color:var(--ink-2);font-size:14.5px;line-height:1.45}
-.jr-school{margin-top:2px!important;color:var(--ink-3);font-size:14px;line-height:1.45}
+.jr-title{margin-top:2px!important;font-weight:700;color:var(--ink);font-size:15px}
+.jr-field{color:var(--ink-2);font-size:13.5px;line-height:1.4}
+.jr-school{margin-top:1px!important;color:var(--ink-3);font-size:13px;line-height:1.4}
 .jr-now .jr-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--teal);animation:jrPulse 2.4s ease-out infinite}
 @keyframes jrPulse{0%{transform:scale(.8);opacity:.9}100%{transform:scale(2);opacity:0}}
 /* walking animation: footprints walk left to right from stop to stop, the stops light up on arrival, then it loops */
