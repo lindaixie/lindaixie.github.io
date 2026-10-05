@@ -896,9 +896,9 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .grant-top{position:relative}
 .lucky-cat{position:absolute;right:-2px;bottom:-8.6px;width:40px;height:40px;color:var(--ink);pointer-events:none}
 .lucky-cat svg{display:block;overflow:visible}
-.lc-fore{transform-box:view-box;transform-origin:13px 13px}
+.lc-fore{transform-box:view-box;transform-origin:15.4px 13px}
 .lc-halo{opacity:.18}
-.lc-glow,.lc-halo{transform-box:view-box;transform-origin:18px 6.4px}
+.lc-glow,.lc-halo{transform-box:view-box;transform-origin:20.4px 6.4px}
 .lc-ingot{transform-box:view-box;transform-origin:9px 20px}
 .lc-spark path{opacity:0;transform-box:fill-box;transform-origin:center}
 @media (prefers-reduced-motion:no-preference){
