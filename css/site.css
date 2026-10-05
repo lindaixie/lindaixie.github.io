@@ -577,6 +577,8 @@ html[lang="zh-Hans"] :is(p,.lead,li){line-height:1.75}
 .me-pi{margin-top:var(--s2);font-size:14px;font-weight:600;color:var(--teal)}
 .me-text .journey{margin-top:0;padding-top:0;border-top:0}
 .me-text .jr{max-width:none}
+/* give the Ph.D. stop a little more room so its field stays on one line */
+@media (min-width:761px){.me-text .jr{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.45fr) minmax(0,1fr)}.jr-stop:nth-child(3) .jr-field{white-space:nowrap}}
 .me-role{margin-top:var(--s4);font-size:clamp(17px,1.6vw,20px);line-height:1.45;color:var(--ink-2)}
 .me-bio{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line);font-size:17px;line-height:1.6;color:var(--ink-2);max-width:68ch}
 .me-links{margin-top:var(--s5);display:flex;flex-wrap:wrap;gap:10px}
