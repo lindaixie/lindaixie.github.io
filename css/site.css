@@ -32,7 +32,7 @@
   --ac1:#1d4a42; --ac2:#5f9150; --ac3:#7a5536;
   --area-line:#b9d3c9; --prog-doing:#9cc58b; --prog-todo:#fff; --prog-todo-line:#cfdcd6;
   --shadow-pop:rgba(20,35,43,.16); --logo-chip:transparent;
-  --paper:#fffdf7; --hl:rgba(156,197,139,.5); --seed:#8a5a3b; --drop:#3d8bd6;
+  --paper:#fffdf7; --hl:rgba(156,197,139,.5); --seed:#8a5a3b; --drop:#3d8bd6; --lucky-red:#d8463c; --lucky-gold:#ffd34d;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -875,6 +875,20 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 @keyframes fcSeed3{0%,52%{opacity:0;transform:translate(0,0)}55%{opacity:1;transform:translate(0,0)}67%{transform:translate(7px,-2.5px)}82%{transform:translate(13px,17px)}94%{opacity:1;transform:translate(13px,17px)}100%{opacity:0;transform:translate(13px,17px)}}
 @keyframes fcCan{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(6deg)}}
 @keyframes fcDrop{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:1;transform:translateY(4.6px)}100%{opacity:0;transform:translateY(5px)}}
+/* lucky cat on the funded-project year line */
+.grant-top{position:relative}
+.lucky-cat{position:absolute;right:-2px;bottom:-1px;width:40px;height:40px;color:var(--ink);pointer-events:none}
+.lucky-cat svg{display:block;overflow:visible}
+.lc-paper{clip-path:inset(0 0 0 0)}
+.lc-wave{transform-box:view-box;transform-origin:9px 15.4px}
+@media (prefers-reduced-motion:no-preference){
+  .lc-paper{animation:lcRoll 3.6s ease-in-out infinite}
+  .lc-roller{animation:lcRoller 3.6s ease-in-out infinite}
+  .lc-wave{animation:lcWave 1.2s ease-in-out infinite}
+}
+@keyframes lcRoll{0%,30%{clip-path:inset(0 0 0 0)}50%,62%{clip-path:inset(0 0 86% 0)}82%,100%{clip-path:inset(0 0 0 0)}}
+@keyframes lcRoller{0%,30%{transform:translateY(0)}50%,62%{transform:translateY(-16.3px)}82%,100%{transform:translateY(0)}}
+@keyframes lcWave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-28deg)}}
 /* area progress bar (left of the arrow) */
 .area-prog{flex:1;max-width:220px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-right:var(--s4)}
 .area-prog .seg{height:10px;border-radius:5px}
