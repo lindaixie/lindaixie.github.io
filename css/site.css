@@ -880,7 +880,7 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .fc-arm{transform-box:view-box;transform-origin:7px 15px}
 .fc-seeds circle{fill:var(--seed);opacity:0}
 /* watering kitten (Area 3): the can tips gently while blue drops fall from the rose */
-.fc-can{transform-box:view-box;transform-origin:10.6px 18.4px}
+.fc-can{transform-box:view-box;transform-origin:12px 16.6px}
 .fc-drops circle{fill:var(--drop);opacity:0}
 @media (prefers-reduced-motion:no-preference){
   .fk-sow .fc-arm{animation:fcSowArm 1.6s ease-in-out infinite}
@@ -898,7 +898,7 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 @keyframes fcSeed2{0%,51%{opacity:0;transform:translate(0,0)}54%{opacity:1;transform:translate(0,0)}65%{transform:translate(5px,-3px)}79%{transform:translate(10px,17.4px)}92%{opacity:1;transform:translate(10px,17.4px)}100%{opacity:0;transform:translate(10px,17.4px)}}
 @keyframes fcSeed3{0%,52%{opacity:0;transform:translate(0,0)}55%{opacity:1;transform:translate(0,0)}67%{transform:translate(7px,-2.5px)}82%{transform:translate(13px,17px)}94%{opacity:1;transform:translate(13px,17px)}100%{opacity:0;transform:translate(13px,17px)}}
 @keyframes fcCan{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(6deg)}}
-@keyframes fcDrop{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:1;transform:translateY(4.6px)}100%{opacity:0;transform:translateY(5px)}}
+@keyframes fcDrop{0%{opacity:0;transform:translateY(0)}15%{opacity:1}85%{opacity:1;transform:translateY(8.4px)}100%{opacity:0;transform:translateY(8.8px)}}
 /* lucky cat on the funded-project year line: sits cross-legged; the raised hand pulls the banner open, lowering it rolls the banner down */
 .grant-top{position:relative}
 .lucky-cat{position:absolute;right:-2px;bottom:-8.6px;width:40px;height:40px;color:var(--ink);pointer-events:none}
