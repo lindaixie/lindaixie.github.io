@@ -587,7 +587,7 @@ html[lang="zh-Hans"] :is(p,.lead,li){line-height:1.75}
 .lab-actions{justify-content:center;margin-top:var(--s5)}
 .lab-page{padding-bottom:clamp(40px,5vw,64px)}
 .lab-page .lab-head{margin-bottom:0}
-.lab-page .lab-logo{margin-top:0}
+.lab-head>.lab-logo:first-child{margin-top:0}
 .lab-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);width:100%;max-width:640px;margin:var(--s6) auto 0;padding:0;list-style:none}
 .lab-stats li{display:flex;flex-direction:column;align-items:center;gap:2px;padding:var(--s3) var(--s2);background:var(--tile);border:1px solid var(--line);border-radius:16px}
 .lab-stat-n{font-family:var(--font-round);font-weight:600;font-size:clamp(26px,3vw,34px);line-height:1.1;color:var(--teal);font-variant-numeric:tabular-nums}
