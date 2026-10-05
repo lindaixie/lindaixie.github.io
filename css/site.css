@@ -830,10 +830,16 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .egg-ic{position:relative;display:inline-flex;flex:none;line-height:0;padding:2px;border:0;border-radius:50%;background:none;cursor:pointer;transform-origin:50% 90%}
 .egg-ic svg{transition:transform .2s var(--ease)}
 .egg-ic:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
-.egg-ic.pop svg{animation:eggPop .9s cubic-bezier(.3,1.4,.5,1) both}
+.egg-top{transform-box:view-box;transform-origin:22px 14.6px;transition:transform .25s var(--ease)}
+.egg-crack{opacity:0}
+.egg-ic.pop svg{animation:eggJolt .35s ease-out both}
+.egg-ic.pop .egg-top{animation:eggLid 1.6s cubic-bezier(.3,1.5,.5,1) both}
+.egg-ic.pop .egg-crack{animation:eggCrack 1.6s ease both}
 .egg-bit{position:absolute;left:50%;top:45%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:1.5px;pointer-events:none;
   animation:eggBit .9s cubic-bezier(.15,.7,.3,1) forwards}
-@keyframes eggPop{0%{transform:scale(1)}12%{transform:scale(1.25,.85)}22%{transform:scale(1.35);opacity:1}30%{transform:scale(.2);opacity:0}70%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes eggJolt{0%{transform:scale(1)}35%{transform:scale(1.12,.9)}70%{transform:scale(.96,1.05)}100%{transform:scale(1)}}
+@keyframes eggLid{0%{transform:none}14%,70%{transform:translate(-1px,-4px) rotate(-26deg)}100%{transform:none}}
+@keyframes eggCrack{0%{opacity:0}8%,78%{opacity:1}100%{opacity:0}}
 @keyframes eggBit{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.6)}70%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1)}}
 .egg-ic:hover:not(.pop),.egg-ic:focus-visible:not(.pop){animation:eggWobble .8s ease-in-out infinite}
 .egg-n,.egg-me{color:var(--teal);font-variant-numeric:tabular-nums}

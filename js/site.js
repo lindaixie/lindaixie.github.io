@@ -379,8 +379,8 @@
           egg.appendChild(b);
           setTimeout(function (el) { return function () { el.remove(); }; }(b), 950);
         }
-      }, 230);
-      setTimeout(function () { egg.classList.remove('pop'); }, 950);
+      }, 160);
+      setTimeout(function () { egg.classList.remove('pop'); }, 1650);
     });
   });
 
