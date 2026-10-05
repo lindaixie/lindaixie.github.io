@@ -845,7 +845,7 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .farm-cat{position:absolute;left:calc((100% + 4px) * var(--at) / var(--n) - 9px);bottom:100%;margin-bottom:-1px;width:32px;height:32px;color:var(--ink);pointer-events:none}
 .farm-cat svg{display:block;overflow:visible}
 .fc-hoe{transform-box:view-box;transform-origin:7px 15.2px;transform:rotate(0deg)}
-.fc-dust circle{fill:var(--teal);opacity:0;transform-box:fill-box;transform-origin:center}
+.fc-dust circle{fill:var(--seed);opacity:0;transform-box:fill-box;transform-origin:center}
 .fc-leg{transform-box:view-box;transform-origin:7px 21px}
 .fc-tail{transform-box:view-box;transform-origin:7px 20.8px}
 .lc-tail{transform-box:view-box;transform-origin:9px 23.3px}
@@ -863,7 +863,7 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 @keyframes fcStepA{0%,100%{transform:rotate(24deg)}50%{transform:rotate(-24deg)}}
 @keyframes fcStepB{0%,100%{transform:rotate(-24deg)}50%{transform:rotate(24deg)}}
 @keyframes fcWalkBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-.6px)}}
-.fc-dust .d2{fill:var(--ac2)}
+.fc-dust .d2{fill:var(--teal-2)}
 @media (prefers-reduced-motion:no-preference){
   .fk-hoe .fc-hoe{animation:fcHoe 1.15s cubic-bezier(.45,0,.3,1) infinite}
   .fk-hoe .fc-body{animation:fcBob 1.15s ease-in-out infinite}
