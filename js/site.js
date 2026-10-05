@@ -340,12 +340,14 @@
     if (!cats.length) return;
     var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var walk = function (c) {
-      var to = +c.getAttribute('data-to'), at = 0;
+      var to = +c.getAttribute('data-to');
+      if (!to) return;
       if (still) { c.style.setProperty('--at', to); return; }
-      var t = setInterval(function () {
-        if (at >= to) { clearInterval(t); return; }
-        at += 1; c.style.setProperty('--at', at);
-      }, 2300);
+      var dur = to * 2.8;   /* slow, steady walk while working: about 2.8 s per segment */
+      c.style.transition = 'left ' + dur + 's linear';
+      c.classList.add('walking');
+      requestAnimationFrame(function () { c.style.setProperty('--at', to); });
+      setTimeout(function () { c.classList.remove('walking'); }, dur * 1000);
     };
     var started = [];
     var start = function (c) { if (started.indexOf(c) !== -1) return; started.push(c); setTimeout(function () { walk(c); }, 1200); };
@@ -358,6 +360,29 @@
     window.addEventListener('scroll', check, { passive: true });
     check();
   })();
+
+  /* ---- easter-egg note: click the egg -> it bursts into a little confetti puff, then comes back ---- */
+  Array.prototype.forEach.call(doc.querySelectorAll('.egg-ic'), function (egg) {
+    var colors = ['#ff8fab', '#ffd34d', '#8fd3c1', '#b9a7f0', '#7fb8f0', '#5f9150'];
+    egg.addEventListener('click', function () {
+      if (egg.classList.contains('pop')) return;
+      egg.classList.add('pop');
+      setTimeout(function () {
+        for (var i = 0; i < 16; i++) {
+          var b = doc.createElement('span'); b.className = 'egg-bit'; b.setAttribute('aria-hidden', 'true');
+          var ang = (i / 16) * Math.PI * 2 + Math.random() * .5, dist = 22 + Math.random() * 26;
+          b.style.background = colors[i % colors.length];
+          if (i % 3 === 0) b.style.borderRadius = '50%';
+          b.style.setProperty('--dx', (Math.cos(ang) * dist).toFixed(0) + 'px');
+          b.style.setProperty('--dy', (Math.sin(ang) * dist - 6).toFixed(0) + 'px');
+          b.style.setProperty('--rot', ((Math.random() - .5) * 540).toFixed(0) + 'deg');
+          egg.appendChild(b);
+          setTimeout(function (el) { return function () { el.remove(); }; }(b), 950);
+        }
+      }, 230);
+      setTimeout(function () { egg.classList.remove('pop'); }, 950);
+    });
+  });
 
   /* ---- mobile menu ---- */
   var btn = doc.querySelector('.menu-btn');

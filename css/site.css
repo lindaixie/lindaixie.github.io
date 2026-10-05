@@ -825,20 +825,37 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 }
 /* easter-egg note (People page, above the footer) */
 .egg-sec{padding:clamp(20px,3vw,32px) 0 clamp(28px,4vw,48px)}
-.egg-note{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 auto;max-width:720px;padding:10px 18px;border:1px dashed var(--line-2);border-radius:999px;
-  color:var(--ink-3);font-size:14px;line-height:1.5;text-align:center}
-.egg-ic{display:inline-flex;flex:none;line-height:0;transform-origin:50% 90%}
-.egg-note:hover .egg-ic{animation:eggWobble .9s ease-in-out}
+.egg-note{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto;max-width:860px;padding:16px 28px;border:1.5px dashed var(--line-2);border-radius:999px;
+  color:var(--ink-2);font-size:17px;line-height:1.5;text-align:center}
+.egg-ic{position:relative;display:inline-flex;flex:none;line-height:0;padding:2px;border:0;border-radius:50%;background:none;cursor:pointer;transform-origin:50% 90%}
+.egg-ic svg{transition:transform .2s var(--ease)}
+.egg-ic:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.egg-ic.pop svg{animation:eggPop .9s cubic-bezier(.3,1.4,.5,1) both}
+.egg-bit{position:absolute;left:50%;top:45%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:1.5px;pointer-events:none;
+  animation:eggBit .9s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes eggPop{0%{transform:scale(1)}12%{transform:scale(1.25,.85)}22%{transform:scale(1.35);opacity:1}30%{transform:scale(.2);opacity:0}70%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes eggBit{0%{opacity:1;transform:translate(0,0) rotate(0) scale(.6)}70%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1)}}
+.egg-ic:hover:not(.pop),.egg-ic:focus-visible:not(.pop){animation:eggWobble .8s ease-in-out infinite}
 .egg-n,.egg-me{color:var(--teal);font-variant-numeric:tabular-nums}
 @keyframes eggWobble{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(11deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}}
-@media (prefers-reduced-motion:reduce){.egg-note:hover .egg-ic{animation:none}}
+@media (prefers-reduced-motion:reduce){.egg-ic:hover,.egg-ic:focus-visible{animation:none!important}.egg-ic.pop svg,.egg-bit{animation-duration:.01s!important}}
 @media (max-width:560px){.egg-note{border-radius:18px;align-items:flex-start;text-align:left}}
 /* kitten hoeing the first published segment */
 .area-prog{position:relative}
-.farm-cat{position:absolute;left:calc((100% + 4px) * var(--at) / var(--n) - 9px);transition:left .7s cubic-bezier(.4,0,.3,1);bottom:100%;margin-bottom:-1px;width:32px;height:32px;color:var(--ink);pointer-events:none}
+.farm-cat{position:absolute;left:calc((100% + 4px) * var(--at) / var(--n) - 9px);bottom:100%;margin-bottom:-1px;width:32px;height:32px;color:var(--ink);pointer-events:none}
 .farm-cat svg{display:block;overflow:visible}
 .fc-hoe{transform-box:view-box;transform-origin:7px 15.2px;transform:rotate(0deg)}
 .fc-dust circle{fill:var(--teal);opacity:0;transform-box:fill-box;transform-origin:center}
+.fc-leg{transform-box:view-box;transform-origin:7px 21px}
+.fc-leg.l1{transform:rotate(17deg)}.fc-leg.l2{transform:rotate(-17deg)}
+@media (prefers-reduced-motion:no-preference){
+  .farm-cat.walking .l1{animation:fcStepA .7s ease-in-out infinite}
+  .farm-cat.walking .l2{animation:fcStepB .7s ease-in-out infinite}
+  .farm-cat.walking .fc-body{animation:fcWalkBob .35s ease-in-out infinite}
+}
+@keyframes fcStepA{0%,100%{transform:rotate(24deg)}50%{transform:rotate(-24deg)}}
+@keyframes fcStepB{0%,100%{transform:rotate(-24deg)}50%{transform:rotate(24deg)}}
+@keyframes fcWalkBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-.6px)}}
 .fc-dust .d2{fill:var(--ac2)}
 @media (prefers-reduced-motion:no-preference){
   .fk-hoe .fc-hoe{animation:fcHoe 1.15s cubic-bezier(.45,0,.3,1) infinite}
