@@ -756,6 +756,45 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 .course-t{font-weight:600;color:var(--ink);font-size:17px}
 .course-meta{font-size:14px;color:var(--ink-3)}
 @media (max-width:560px){.course{grid-template-columns:1fr;gap:2px}}
+/* home: education-to-now timeline with walking footprints */
+.journey{margin-top:clamp(40px,5vw,64px);padding-top:clamp(28px,3.5vw,40px);border-top:1px solid var(--line)}
+.jr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:var(--s5) 0 0;padding:0}
+.jr-stop{position:relative;min-width:0;padding-right:var(--s4)}
+.jr-stop p{margin:0}
+.jr-dot{position:relative;z-index:1;display:block;width:18px;height:18px;margin-bottom:var(--s4);border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px var(--teal-soft)}
+.jr-steps{position:absolute;top:0;left:34px;right:14px;height:18px;display:flex;align-items:center;justify-content:space-around}
+.jr-foot{display:block;width:12px;height:19px;color:var(--teal);opacity:.5}
+.jr-foot svg{display:block;width:100%;height:100%;fill:currentColor;transform:rotate(90deg)}
+.jr-foot:nth-child(odd){margin-top:-11px}
+.jr-foot:nth-child(even){margin-top:11px}
+.jr-yr{display:flex;align-items:center;gap:8px;font-family:var(--font-round);font-weight:600;font-size:20px;color:var(--teal);font-variant-numeric:tabular-nums}
+.jr-badge{font-family:var(--font);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--on-accent);background:var(--teal);padding:2px 8px;border-radius:999px}
+.jr-title{margin-top:6px!important;font-weight:700;color:var(--ink);font-size:16px}
+.jr-field{color:var(--ink-2);font-size:14.5px;line-height:1.45}
+.jr-school{margin-top:2px!important;color:var(--ink-3);font-size:14px;line-height:1.45}
+.jr-now .jr-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--teal);animation:jrPulse 2.4s ease-out infinite}
+@keyframes jrPulse{0%{transform:scale(.8);opacity:.9}100%{transform:scale(2);opacity:0}}
+/* walking animation (only when JS runs and motion is allowed) */
+@media (prefers-reduced-motion:no-preference){
+  .js .journey:not(.go) .jr-dot,.js .journey:not(.go) .jr-foot,.js .journey:not(.go) .jr-stop>p{opacity:0}
+  .journey.go .jr-dot{animation:jrPop .5s cubic-bezier(.3,1.6,.5,1) var(--d) both}
+  .journey.go .jr-stop>p{animation:jrRise .5s cubic-bezier(.2,.7,.2,1) calc(var(--d) + .15s) both}
+  .journey.go .jr-foot{animation:jrStep .35s ease-out var(--d) both}
+  .journey.go .jr-now .jr-dot::after{animation-delay:calc(var(--d) + .5s)}
+}
+@keyframes jrPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+@keyframes jrRise{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+@keyframes jrStep{0%{opacity:0;transform:scale(.4)}60%{opacity:.75;transform:scale(1.15)}100%{opacity:.5;transform:scale(1)}}
+@media (max-width:760px){
+  .jr{grid-template-columns:1fr;gap:0}
+  .jr-stop{padding:0 0 var(--s6) 40px}
+  .jr-stop:last-child{padding-bottom:0}
+  .jr-dot{position:absolute;left:0;top:3px;margin:0}
+  .jr-steps{top:30px;bottom:6px;left:4px;right:auto;width:10px;height:auto;flex-direction:column}
+  .jr-foot svg{transform:rotate(180deg)}
+  .jr-foot:nth-child(odd){margin:0 0 0 -7px}
+  .jr-foot:nth-child(even){margin:0 0 0 7px}
+}
 /* area progress bar (left of the arrow) */
 .area-prog{flex:1;max-width:220px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin-right:var(--s4)}
 .area-prog .seg{height:10px;border-radius:5px}

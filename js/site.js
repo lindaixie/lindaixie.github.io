@@ -262,6 +262,16 @@
     ui();
   })();
 
+  /* ---- home timeline: start the footprints when it scrolls into view ---- */
+  (function () {
+    var jr = doc.querySelector('.journey'); if (!jr) return;
+    if (!('IntersectionObserver' in window)) { jr.classList.add('go'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { jr.classList.add('go'); io.disconnect(); } });
+    }, { threshold: 0.35 });
+    io.observe(jr);
+  })();
+
   /* ---- mobile menu ---- */
   var btn = doc.querySelector('.menu-btn');
   var nav = doc.getElementById('site-nav');
