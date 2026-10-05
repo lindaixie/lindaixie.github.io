@@ -730,6 +730,7 @@ mark.ack-name.glow{animation:ackGlow 2.6s cubic-bezier(.2,.7,.2,1) both}
 /* professional service (Publications page) */
 .svc-grid{align-items:start}
 .tile.svc-col{padding:clamp(20px,2.4vw,28px)}
+.svc-block+.svc-block{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line-2)}
 .svc-list{list-style:none;margin:var(--s3) 0 0;padding:0}
 .svc-item{display:flex;flex-direction:column;gap:2px;padding:var(--s3) 0;border-top:1px solid var(--line)}
 .svc-item:first-child{border-top:0;padding-top:0}
